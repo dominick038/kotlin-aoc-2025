@@ -27,3 +27,10 @@ replay_pid*
 .kotlin/
 
 */bin/
+
+resources/*
+!resources/.gitkeep
+
+build/*
+.gradle/*
+*gradlew*
