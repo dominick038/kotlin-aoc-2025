@@ -34,3 +34,9 @@ resources/*
 build/*
 .gradle/*
 *gradlew*
+
+# IntelliJ IDEA files
+*.iml
+*.ipr
+*.iws
+.idea/
