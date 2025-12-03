@@ -6,8 +6,8 @@ import kotlin.text.toInt
 fun main() {
     val input = readInput("day03");
 
-    var result: Int = 0;
-    var result2: Long = 0;
+    var twoBatteryResult: Int = 0;
+    var twelveBatteryResult: Long = 0;
     for (line in input) {
         var i = 0;
 
@@ -44,10 +44,10 @@ fun main() {
             i += 1; 
         }
 
-        result += (largestNum.toString() + secondLargestNum.toString()).toInt();
-        result2 += stack.reversed().take(12).joinToString("").toLong();
+        twoBatteryResult += (largestNum.toString() + secondLargestNum.toString()).toInt();
+        twelveBatteryResult += stack.reversed().take(12).joinToString("").toLong();
     }
 
-    println("Total joltage across 2  batteries: $result");
-    println("Total joltage across 12 batteries: $result2");
+    println("Total joltage across 2  batteries: $twoBatteryResult");
+    println("Total joltage across 12 batteries: $twelveBatteryResult");
 }
