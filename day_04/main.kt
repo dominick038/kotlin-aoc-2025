@@ -6,6 +6,7 @@ fun main() {
     val input = readInput("day04");
    
     var accessibleRollsOfPaper = 0;
+    var totalRollsRemoved = 0;
 
     val hashOfPositions: HashSet<Pair<Int, Int>> = HashSet();
     for (i in 0..input.size - 1) {
@@ -41,5 +42,36 @@ fun main() {
         }
     }
 
+    var removedRollOfPaper = true;
+    while (removedRollOfPaper) { 
+        removedRollOfPaper = false;
+        val markedForDeletion: HashSet<Pair<Int, Int>> = HashSet();
+        for ((x, y) in hashOfPositions) {
+            var neighbours = 0;
+
+            for ((dx, dy) in directions) {
+                val nx = x + dx;
+                val ny = y + dy;
+
+                if (hashOfPositions.contains(Pair(nx, ny))) {
+                    neighbours += 1;            
+                }
+            }
+
+            if (neighbours < 4) {
+                markedForDeletion.add(Pair(x, y));
+            }
+        }
+        
+        if (markedForDeletion.isNotEmpty()) {
+            removedRollOfPaper = true;
+            for (mark in markedForDeletion) {
+                hashOfPositions.remove(mark);
+                totalRollsRemoved += 1;
+            }
+        }
+    }
+
     println("Total amount of accesible rolls of paper: $accessibleRollsOfPaper");
+    println("Total amount of rolls of paper removed: $totalRollsRemoved");
 }
